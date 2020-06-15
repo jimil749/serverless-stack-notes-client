@@ -8,7 +8,7 @@ import './BillingForm.css';
 function BillingForm({ isLoading, onSubmit, ...props}) {
     const [fields, handleFieldChange] = useFormFields({
         name: "",
-        storage: 0
+        storage: ""
     });
 
     const [isProcessing, setIsProcessing] = useState(false);
@@ -36,7 +36,7 @@ function BillingForm({ isLoading, onSubmit, ...props}) {
 
     return (
         <form className="BillingForm" onSubmit={handleSubmitClick}>
-            <FormGroup bsSize="large" controlId="Storage">
+            <FormGroup bsSize="large" controlId="storage">
                 <ControlLabel>Storage</ControlLabel>
                 <FormControl 
                     min="0"
@@ -71,6 +71,7 @@ function BillingForm({ isLoading, onSubmit, ...props}) {
                 isLoading={isLoading}
                 disabled={!validateForm()}
             >
+                Purchase
             </LoaderButton>
         </form>
     );
