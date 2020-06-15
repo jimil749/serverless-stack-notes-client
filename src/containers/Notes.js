@@ -42,10 +42,13 @@ export default function Notes() {
     }, [id])
 
     function saveNote(note) {      
-        console.log(note);  
         return API.put("notes", `/notes/${id}`, {
             body: note
         });
+    }
+
+    function deleteNote() {
+        return API.del("notes", `/notes/${id}`);
     }
 
     async function handleSubmit(event) {
@@ -59,7 +62,6 @@ export default function Notes() {
 
         setIsLoading(true);
         try {
-            console.log(file.current);
             if (file.current) {                
                 attachment = await s3Upload(file.current);
             }
@@ -83,6 +85,15 @@ export default function Notes() {
 
         if (!confirm) {
             return ;            
+        }
+        setIsDeleting(true);
+
+        try{
+            await deleteNote();
+            history.push("/");
+        } catch(e) {
+            onError(e);
+            setIsDeleting(false);
         }
     }
 
