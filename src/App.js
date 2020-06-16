@@ -5,7 +5,7 @@ import './App.css';
 import Routes from './Routes';
 import { AppContext } from './libs/ContextLib';
 import { Auth } from 'aws-amplify';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, withRouter } from 'react-router-dom';
 import { onError } from './libs/errorLib';
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
         </Navbar.Collapse>
       </Navbar>
       <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        <Routes />
+        <Routes appProps={{ isAuthenticated, userHasAuthenticated}}/>
       </AppContext.Provider>
 
     </div>
@@ -77,4 +77,4 @@ function App() {
 }
 
 
-export default App;
+export default withRouter(App);
