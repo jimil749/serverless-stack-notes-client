@@ -6,7 +6,7 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import LoaderButton from '../components/LoaderButton';
 import config from '../config';
 import './Note.css';
-import { s3Upload, s3Remove } from '../libs/awsLib';
+import { s3Upload } from '../libs/awsLib';
 
 
 export default function Notes() {
