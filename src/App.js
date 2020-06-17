@@ -7,6 +7,7 @@ import { AppContext } from './libs/ContextLib';
 import { Auth } from 'aws-amplify';
 import { useHistory, Link, withRouter } from 'react-router-dom';
 import { onError } from './libs/errorLib';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -68,9 +69,11 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        <Routes appProps={{ isAuthenticated, userHasAuthenticated}}/>
-      </AppContext.Provider>
+      <ErrorBoundary>
+        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+          <Routes appProps={{ isAuthenticated, userHasAuthenticated}}/>
+        </AppContext.Provider>
+      </ErrorBoundary>
 
     </div>
   )
