@@ -20,7 +20,7 @@ const prod = {
   STRIPE_KEY: "pk_test_51GsXbVHiX32xsQfErWqvuPu96XflcKImg463SGDk55Mwiw93wZUb3ChqiropOHsa2PUNDDSUnlxassCaBYnwsQaC00DhU04DHM",
   s3: {
     REGION: "ap-south-1",
-    BUCKET: " notes-app-2-api-prod-attachmentsbucket-1jugigjzppdff"
+    BUCKET: "notes-app-2-api-prod-attachmentsbucket-1jugigjzppdff"
   },
   apiGateway: {
     REGION: "ap-south-1",
